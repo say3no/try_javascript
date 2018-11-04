@@ -1,10 +1,10 @@
 // ## Closures
 // このセクションは、この再入門の内JSがもたらすものの中で最も協力なものの一つだが、同時にもっとも混乱させる可能性を秘めているセクションでもある。 クロージャとはなんだろう？
 
-function makeAdder(a){
-  return function(b) {
-    return a + b;
-  };
+function makeAdder(a) {
+    return function(b) {
+        return a + b;
+    };
 }
 
 var x = makeAdder(5);

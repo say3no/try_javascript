@@ -166,13 +166,13 @@ var hill = new Person_3('William', 'Orange');
 
 // applyってのは、 call っていう姉妹関数を持っている
 
-function lastNameCaps(){
-  return this.last.toUpperCase();
+function lastNameCaps() {
+    return this.last.toUpperCase();
 }
 
 var s = new Person_3('Simon', 'Willson');
 console.log(lastNameCaps.call(s))
-// これは、以下と同じことだ
+    // これは、以下と同じことだ
 s.lastNameCaps = lastNameCaps;
 console.log(s.lastNameCaps());
 
@@ -182,13 +182,13 @@ console.log(s.lastNameCaps());
 
 
 function parentFunc() {
-  var a = 1;
+    var a = 1;
 
-  function nestedFunc() { 
-    var b = 4; // 親の関数からはアクセスできないけど…
-    return a + b; // ネストされた関数は親の変数がスコープに含まれる
-  }
-  return nestedFunc(); // 5
+    function nestedFunc() {
+        var b = 4; // 親の関数からはアクセスできないけど…
+        return a + b; // ネストされた関数は親の変数がスコープに含まれる
+    }
+    return nestedFunc(); // 5
 }
 
 console.log(parentFunc());

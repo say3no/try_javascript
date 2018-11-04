@@ -99,16 +99,16 @@ function new_avg(...args) {
 console.log(new_avg(2, 3, 4, 5)) // 3.5
 
 function avgArry(arr) {
-  var sum = 0;
-  for (var i =0 , j = arr.length; i < j ; i++){
-    sum += arr[i];
-  }
-  return sum /arr.length
+    var sum = 0;
+    for (var i = 0, j = arr.length; i < j; i++) {
+        sum += arr[i];
+    }
+    return sum / arr.length
 }
 
 //これまでの例だと、平均の計算対象となる数列以外を引数に渡したい時にどうすればよいだろう？ apply() はすべての関数オブジェクトが持つメソッドで、こいつを使おう
 
-console.log(avg.apply(null, [2,3,4,5]))
+console.log(avg.apply(null, [2, 3, 4, 5]))
 
 
 // この第一引数の null については後で学ぶ。
