@@ -80,13 +80,14 @@ console.log(max(23, 444));
 console.log(max(1123, 444));
 
 var arr = [5, 6, 13, 0, 1, 18, 23];
-var sum = arr.reduce((a, b) => a + b); // 5,6を渡して、5+6=11を得る。11,13を渡して…
+var sum = arr.reduce((a, b) => {
+    console.log("a: " + a)
+    console.log("b: " + b)
+    return a + b
+}); // 5,6を渡して、5+6=11を得る。11,13を渡して…
 console.log(sum)
-// jsのarray.reduce(), なかなか便利な関数かもしれない
-console.log("aaaaaaaaaaaaa");
-var sum = arr.reduce((a, b, c) => { console.log(a); console.log(b); console.log(c);  return a + b + c;}); // この場合はどうだろう？
-console.log(sum)
+    // jsのarray.reduce(), なかなか便利な関数かもしれない
 
-
-
-
+console.log(arr.map(v => v * 2))
+console.log(arr.filter(v => 10 < v))
+console.log(arr.reduce((a, b) => a + b))
