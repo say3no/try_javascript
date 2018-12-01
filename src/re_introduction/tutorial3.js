@@ -35,9 +35,9 @@ function personFullNameReversed_0(person) {
     return person.last + ' ' + person.first;
 }
 
-var s = ug_makePerson('Simon', 'Willson');
-console.log(personFullName_0(s));
-console.log(personFullNameReversed_0(s));
+var ss = ug_makePerson('Simon', 'Willson');
+console.log(personFullName_0(ss));
+console.log(personFullNameReversed_0(ss));
 
 // こここまでmake Person はuglyな例
 function makePerson(first, last) {
@@ -50,24 +50,24 @@ function makePerson(first, last) {
         fullNameReversed: function() {
             return this.last + ', ' + this.first;
         }
-    }
+    };
 }
 
 
 var u = makePerson('Sano', 'Say');
-console.log(u.fullName())
-console.log(u.fullNameReversed())
+console.log(u.fullName());
+console.log(u.fullNameReversed());
 
 // Personクラスとしてfunctionを用意するのと、thisでスコープをちゃんと分けろって話
 function Person_1(first, last) {
-    this.first = first
-    this.last = last
+    this.first = first;
+    this.last = last;
     this.fullName = function() {
         return this.first + ' ' + this.last;
-    }
+    };
     this.fullNameReversed = function() {
         return this.last + ', ' + this.first;
-    }
+    };
 
 }
 
@@ -105,58 +105,58 @@ function Person_3(first, last) {
 }
 
 Person_3.prototype.fullName = function() {
-    return this.first + ' ' + this.lsat
+    return this.first + ' ' + this.lsat;
 };
 
 Person_3.prototype.fullNameReversed = function() {
-    return this.last + ' ' + this.first
+    return this.last + ' ' + this.first;
 };
 
 // Person_3.prototype はPerson_3 のすべてのインスタンス共通のオブジェクトだ。
 // JSはPerson_3の中→prototypeの順にnamespaceを探っていく。
 // こいつは信じられないほど協力なツールだ。あとからオブジェクトメソッドの拡張ができてしまうのだ。
 
-var hoge = new Person_3("aiueo", "tarou");
+var hoge = new Person_3('aiueo', 'tarou');
 console.log(hoge.fullNameReversed());
 // console.log(hoge.firstNameCaps()); // TypeError: undefined
 
 Person_3.prototype.firstNameCaps = function() {
     return this.first.toUpperCase();
-}
+};
 console.log(hoge.firstNameCaps());
 
 // 興味深いことに、JSのビルトインオブジェクトにも prototype を定義できる。
 
-var a = "aaaaaaaaaAAAAAaaBBBBBBBBBbbb"
-    //console.log(a.reversed()); // TypeError: undefined
+var aa = 'aaaaaaaaaAAAAAaaBBBBBBBBBbbb';
+//console.log(a.reversed()); // TypeError: undefined
 
 String.prototype.reversed = function() {
     var r = '';
     for (var i = this.length - 1; i >= 0; i--) {
-        r += this[i]
+        r += this[i];
     }
-    return r
-}
+    return r;
+};
 
-console.log(a)
-console.log(a.reversed());
-console.log("ABCDEFG".reversed())
+console.log(aa);
+console.log(aa.reversed());
+console.log('ABCDEFG'.reversed());
 
-console.log(hoge.toString()) // [object Object]
-    // すでにprototypeに定義されている関数は、オーバーライドもできる。
+console.log(hoge.toString()); // [object Object]
+// すでにprototypeに定義されている関数は、オーバーライドもできる。
 Person_3.prototype.toString = function() {
     return '<Person: ' + this.fullName() + '>';
-}
-console.log(hoge.toString())
+};
+console.log(hoge.toString());
 
 // 第一引数にnullを持っていた avg.apply() を覚えているだろうか？(tutorial2.js) いまこいつに再訪してみよう。apply()の第一引数は`this`のことだ。pythonでいえばselfみたいなもんか。オブジェクト自身を渡している。
 // たとえば、遊びとしてこんな new の拡張を考えてみようか。
 
 
 function trivialNew(constructor, ...args) {
-    var o = {} // Create empty object
-    constructor.apply(o, args)
-    return o
+    var o = {}; // Create empty object
+    constructor.apply(o, args);
+    return o;
 }
 
 // こいつは厳密な new の拡張ではない。prototypeのセットアップをしていないからね。
@@ -170,9 +170,9 @@ function lastNameCaps() {
     return this.last.toUpperCase();
 }
 
-var s = new Person_3('Simon', 'Willson');
-console.log(lastNameCaps.call(s))
-    // これは、以下と同じことだ
+const s = new Person_3('Simon', 'Willson');
+console.log(lastNameCaps.call(s));
+// これは、以下と同じことだ
 s.lastNameCaps = lastNameCaps;
 console.log(s.lastNameCaps());
 

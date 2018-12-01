@@ -6,7 +6,7 @@ var materials = [
     'fuhihi'
 ];
 
-console.log(materials.map(material => material.length))
+console.log(materials.map(material => material.length));
 
 // map関数は、ある関数xに対して、配列の各要素を引数として処理したものを配列で返すというもの（だと思う)
 
@@ -20,29 +20,29 @@ var elements = [
 ];
 
 // 今までの記法だと、こうなる
-a = elements.map(function(element) {
-    return element.length
+const aa = elements.map(function(element) {
+    return element.length;
 });
 // 上記は、以下すべてと等価なのだ
 
 // わかるわ
-b = elements.map(element => {
-    return element.length
+const bb = elements.map(element => {
+    return element.length;
 });
 
 // わかるわ
-c = elements.map(element => element.length);
+const cc = elements.map(element => element.length);
 
 // わからないわ
 // 引数が持っている属性、メソッドがスコープに入っていて、それと一致していたらそれを使える??
-d = elements.map(({
+const dd = elements.map(({
     length
 }) => length);
 
-console.log(a)
-console.log(b)
-console.log(c)
-console.log(d)
+console.log(aa);
+console.log(bb);
+console.log(cc);
+console.log(dd);
 
 // ## No separate this
 
@@ -52,7 +52,7 @@ function Person_1() {
 
     setInterval(function growUP() {
         // `this` のスコープが違うので、アクセスできない。growUPのthisと、Personのコンストラクタのthisは別のものを指している。
-        console.log("Person_1: " + this.age++);
+        console.log('Person_1: ' + this.age++);
     }, 1000);
 }
 
@@ -63,7 +63,7 @@ function Person_2() {
     that.age = 0;
 
     setInterval(function growUP() {
-        console.log("Person_2 : " + that.age++);
+        console.log('Person_2 : ' + that.age++);
     }, 1000);
 }
 
@@ -74,7 +74,7 @@ function Person_3() {
     this.age = 0;
 
     setInterval(() => {
-        console.log("Person_3 :" + this.age++);
+        console.log('Person_3 :' + this.age++);
     }, 1000);
 }
 
@@ -106,29 +106,30 @@ var adder = {
     }
 };
 
-console.log(adder.add(1))
-console.log(adder.add(1))
-console.log(adder.add(1))
+console.log(adder.add(1));
+console.log(adder.add(1));
+console.log(adder.add(1));
 
-
+const a = 111;
 // ## No binding of arguments
 // Arrow functionは arguments objectを持たない。
+/*
 var arguments = [1, 2, 3]
 var arr = () => arguments[0];
-
-console.log("arr():" + arr()) // 1
+console.log('arr():' + arr()); // 1
+*/
 
 function foo(n) {
     var f = () => arguments[0] + n; // 2倍
     return f();
 }
 
-console.log("foo(3)" + foo(3))
+console.log('foo(3)' + foo(3));
 
 // そもそもargumentsじゃなくてargs使おうね
 function bar(n) {
     var f = (...args) => args[0] + n;
-    return f(10)
+    return f(10);
 }
 
 console.log(bar(1)); // 11

@@ -6,21 +6,13 @@
     "author": "say3no <say3no@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "test": "jest ",
+        "t": "jest --coverage --no-cache",
         "start": "node src/try_babel/server.js"
     },
-    "jest": {
-        "collectCoverageFrom": [
-            "src/**/*.{js,jsx}",
-            "!**/node_modules/**",
-            "!**/vendor/**"
-        ],
-        "runner": "jest-runner-eslint",
-        "displayName": "ESLint"
-    },
     "dependencies": {
-        "babel-cli": "^6.26.0",
-        "babel-preset-env": "^1.7.0",
+        "@babel/preset-env": "^7.1.6",
+        "babel": "^6.23.0",
+        "babel-preset-es2015": "^6.24.1",
         "express": "^4.16.4",
         "jest": "^23.6.0",
         "jest-runner-eslint": "^0.7.1"

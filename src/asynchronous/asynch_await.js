@@ -9,7 +9,7 @@ function hoge(num) {
         } else {
             reject('err');
         }
-    })
+    });
 }
 
 // 上は非同期関数にする旨味ゼロのクソ関数だが、まあようするにPromiseで返しましょうっていう話ですな
@@ -49,7 +49,7 @@ piyo();
 
 // await はmap, Promise.all, Promise.race なんかも awaitできていい感じ
 async function rapid() {
-    console.log("hayai");
+    console.log('hayai');
     return 'hayai';
 }
 
@@ -69,7 +69,7 @@ function promise_all() {
     const c = slowly();
 
     return Promise.all([a, b, c]).then((a, b, c) => {
-        console.log("zenbu owatta yo -----");
+        console.log('zenbu owatta yo -----');
     });
 }
 
@@ -81,7 +81,7 @@ function promise_race() {
     const c = slowly();
 
     return Promise.race([a, b, c]).then((first) => {
-        console.log(first + "が一番や!");
+        console.log(first + 'が一番や!');
     });
 }
 
@@ -95,7 +95,7 @@ function sampleResolve(value) {
         setTimeout(() => {
             resolve(value);
         }, 2000);
-    })
+    });
 }
 
 async function sample() {

@@ -25,7 +25,7 @@ var asyncBuyApple = function(payment, callback) {
             callback(null, '金額が足りません。');
         }
     }, 1000);
-}
+};
 
 //りんごをひとつだけ買う場合
 asyncBuyApple(500, function(change, error) {
@@ -65,9 +65,9 @@ asyncBuyApple(500, function(change, error) {
     }
 });
 
-console.log("============== Promise =================")
-    // ## Promise
-    // このようなcallback地獄はPromiseを使ってよりスマートに実装できる
+console.log('============== Promise =================');
+// ## Promise
+// このようなcallback地獄はPromiseを使ってよりスマートに実装できる
 var promiseBuyApple = function(payment) {
     return new Promise(function(resolve, reject) {
         if (payment >= 150) {
@@ -76,7 +76,7 @@ var promiseBuyApple = function(payment) {
             reject('金額が足りません。');
         }
     });
-}
+};
 
 // Promise型はコンストラクタで成功時と失敗時を定義して、そいつがおわったら.then(成功時)と.catch(失敗時)の定義で、
 // で次の処理を記述できる。
